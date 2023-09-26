@@ -6,7 +6,8 @@ void cipher(Pixel* pixel[4],  uint8_t value[3]){
     // BITS    00 00 00 00 11 11 11 11 22 22 22 22
     // PIXEL   00 00 00 11 11 11 22 22 22 33 33 33
     // COR     RR GG BB RR GG BB RR GG BB RR GG BB
-
+    static int c = 0;
+    if(c++ == 0 ) printf("value: %d %d %d\n", value[0], value[1], value[2]);
     for(int i = 0; i < 12 ; i++){
         int indexValue = floor(i/4);
         int indexPixel = floor(i/3);
@@ -50,6 +51,9 @@ uint8_t* decipher(Pixel* pixel[4]){
             values[indexValue] = values[indexValue] | bits;
         }
     }
+
+    static int c = 0;
+    if(c++ == 0 ) printf("value: %d %d %d\n", values[0], values[1], values[2]);
 
     return values;
 }
